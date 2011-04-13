@@ -1,0 +1,400 @@
+body{
+  background-image:url(images/bodybg.jpg);
+  text-align:center;
+  margin:2px;
+}
+
+
+#wrapper{
+  width:760px;
+  text-align:left;
+  padding: 0px;
+  margin:auto;
+  border:1px solid black;
+  background-color:#FFF;
+}
+
+#header{
+  height:81px;
+  background-image:url(images/header_bg.jpg);
+  text-indent:10px;
+  width:760px;
+}
+
+
+#menubar{
+  height:29px;
+  background-image:url(images/menu_bg.jpg);
+  text-indent:10px;
+  width:760px;
+}
+
+#menu{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color:#FFF;
+}
+
+#menu a{
+  text-decoration:none;
+  color:#FC6;
+}
+#menu a:hover{
+  color:#FFF;
+}
+
+#menu li{
+  font-family:Arial;
+  font-size:12px;
+  float:left;
+  margin: 5px;
+  margin-left:10px;
+  border-left: 1px solid black;
+  font-weight:bold;
+}
+
+#menu li.first{
+  border-left:none;
+}
+#menu li.last{
+  float:right;
+  border-left:none;
+  margin-right:10px;
+}
+#menu li.search{
+  border-left:none;
+
+  margin-left:30px;
+}
+#txtSearch{
+  height:12px;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:12px;
+}
+#searchButton{
+  font-size:12px;
+  height:18px;
+}
+
+#content{
+  background-color:#FFFFFF;
+  width:760px;
+}
+
+#footer{
+  clear:both;
+  height:30px;
+  background-image:url(images/footer_bg.jpg);
+  vertical-align:middle;
+  width:760px;
+}
+
+#left_col{
+	width:200px;
+	float:left;
+	border-right:1px dashed #cccccc;
+	padding:10px;
+}
+
+#right_col{
+	width:300px;
+	float:right;
+	padding:5px;
+
+}
+
+#copyright{
+  text-align:center;
+  font-family:Arial;
+  font-size:12px;
+  padding:6px;
+  color:#CCC;
+}
+
+img.home_right_image{
+  border:1px solid #333333;
+  float:right;
+}
+
+img.menu{
+  border:0px;
+  vertical-align:middle;
+
+}
+
+dl.product{
+  border: 1px solid #BBBBBB;
+  margin:0px;
+}
+dl.product dt{
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:12px;
+  text-align:center;
+  font-weight:bold;
+  background-color:#C7D6F1;
+}
+
+dl.product dd{
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:12px;
+  text-align:center;
+  background-color:#FFFFFF;
+  margin: 0px;
+  padding: 2px;
+}
+dl.product dd img{
+  width:90px;
+  border: 0px;
+}
+
+dl.product dd p{
+  font-size: 14px;
+  line-height:0px;
+  padding: 0px;
+  font-weight: bold;
+}
+
+dl.product dd hr{
+  line-height:0px;
+  padding: 0px;
+  border:1px dashed #CCCCCC;
+  height: 0px;
+}
+
+span.price{
+  color:#990000;
+  font-weight:bold;
+  font-family:Verdana, Arial, Helvetica, sans-serif;
+  font-size:12px;
+}
+a.addtocart{
+  text-decoration:none;
+  font-weight:bold;
+  color:#3366CC;
+}
+#productDetailsLeft{
+  margin-left:10px;
+  margin-top:10px;
+  width:480px;
+  float:left;
+  border-right:none;
+}
+#productDetailsRight{
+  border:none;
+  margin-top:10px;
+  margin-right:10px;
+  width:246px;
+  float:left;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:12px;
+  padding:5px;
+}
+p.right{
+	text-align:right;
+}
+#productDetailsLeft p.title{
+  font-weight:bold;
+  font-size:18px;
+  font-family:Arial, Helvetica, sans-serif;
+  margin-left:10px;
+
+}
+.gray{
+  color:#999999;
+}
+#productDetailsLeft p.code{
+  font-size:12px;
+  color:#999999;
+  font-family:Arial, Helvetica, sans-serif;
+    margin-left:10px;
+}
+#productDetailsLeft img{
+  border:1px solid #cccccc;
+  margin:10px;
+  height:250px;
+}
+#productDetailsLeft dl.description{
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:12px;
+  margin:10px;
+}
+#productDetailsLeft dl.description dt{
+  font-weight:bold;
+}
+#productDetailsLeft dl.description dd{
+  padding:5px;
+  margin:5px;
+}
+#basket{
+	text-align:center;
+	font-family:Arial, Helvetica, sans-serif;
+}
+table.basket{
+	width:500px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	margin:auto;
+	border-spacing:0px;
+	border:1px solid #333333;
+}
+table.basket img{
+	height:40px;
+}
+table.basket th{
+	background-color:#666699;
+	color:#FFFFFF;
+
+}
+table.basket tr.odd{
+	background-color:#EDEDF3
+}
+table.basket tr.even{
+	background-color:#E5E5E5;
+}
+table.basket tr.update{
+	background-color:#C0D6F8;
+}
+table.basket tr.total{
+	background-color:#F5F5F5;
+	text-align:center;
+}
+table.basket tr.totalGross{
+	background-color:#D8DBE9;
+	font-weight:bold;
+	padding:5px;
+}
+table.basket tr.totalGross td{
+	border:1px;
+}
+table.basket input{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+}
+table.basket td.checkout{
+	text-align:center;
+	padding:8px;
+}
+h4.error{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	color:#FF0000;
+	font-weight:bold;
+	font-size:12px;
+}
+h3.results{
+	background-color:#6699CC;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:normal;
+	background-image:url(images/titlebg.gif);
+	padding:5px;
+	text-indent:10px;
+	border-top:1px #6699CC solid;
+	margin:10px;
+}
+h3.results b{
+	color:#900;
+	font-weight:bold;
+}
+h4.results{
+	text-align:right;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:10px;
+
+	line-height:10px;
+	padding-right:20px;
+	padding-top:0px;
+	margin:0px;
+}
+h4.pages{
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:10px;
+	font-weight:normal;
+	text-align:right;
+	padding-right:20px;
+	border-top:1px #CCC solid;
+	border-bottom:1px #CCC solid;
+	background-color:#F2F2F2;
+	margin:15px;
+
+}
+h4.pages a{
+	font-weight:bold;
+	color:#39C;
+	text-decoration:none;
+}
+h4.pages a:hover{
+	text-decoration:underline;
+}
+
+table.products{
+	width:90%;
+	margin:auto;
+}
+table.products td{
+  padding:5px;
+  width:33%;
+  text-align:center;
+  border-bottom:1px #cccccc solid;
+  padding-bottom:10px;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:12px;
+
+}
+table.products a{
+  font-family:Verdana, Arial, Helvetica, sans-serif;
+  font-size:12px;
+  color:#003366;
+  font-weight:bold;
+
+}
+table.products img{
+  border:0px;
+}
+div.products{
+  width:100%;
+  text-align:center;
+}
+div.center{
+    text-align:center;
+}
+#contact_form{
+	text-align:center;
+	margin:auto;
+	width:300px;
+	margin-top:30px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	border:#336 1px solid;
+        margin-bottom:20px;
+}
+#contact_form .titlebar{
+	background-color:#336;
+	color:#FFF;
+	font-weight:bold;
+	padding:3px;
+}
+#contact_form input,textarea{
+	width:100px;
+}
+#contact_form button{
+	width:80px;
+}
+#forms{
+	list-style:none;
+}
+#forms label{
+	float:left;
+	text-align:right;
+	margin-right:10px;
+	width:100px;
+}
+#forms li{
+	margin:3px;
+	width:290px;
+	text-align:left;
+}
+#forms li.submit{
+	text-align:center;
+	border:none;
+}
