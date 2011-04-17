@@ -11,6 +11,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * 
@@ -19,6 +22,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "product")
+@XmlRootElement(name="product")
 public class ProductImpl implements Product, Serializable
 {
 
@@ -66,9 +70,10 @@ public class ProductImpl implements Product, Serializable
 		this.description = description;
 	}
 
+	@XmlAttribute
 	public Integer getId()
 	{
-		return id;
+		return this.id;
 	}
 
 	public void setId(Integer id)
@@ -137,6 +142,7 @@ public class ProductImpl implements Product, Serializable
 	public String toXML()
 	{
 		StringBuilder xml = new StringBuilder();
+		
 		xml.append("<product id=\"").append(this.getId()).append("\">");
 		xml.append("   <name>").append(this.getName()).append("</name>");
 		xml.append("   <picture>").append(this.getPicture())

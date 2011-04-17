@@ -5,13 +5,21 @@
 
 package server.service.resteasy;
 
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.ws.rs.*;
+import javax.ws.rs.core.StreamingOutput;
+import javax.xml.bind.annotation.XmlElement;
+
 import server.entitybean.Product;
+import server.entitybean.ProductImpl;
+import server.entitybean.Products;
 import server.sessionbean.ShopBean;
 
 /**
@@ -42,7 +50,7 @@ public class ShopService
 	@GET
 	@Path("/products")
 	@Produces("application/json")
-	public Collection<Product> getProducts(
+	public Products getProducts(
 			@QueryParam("keyword") final String query)
 	{
 		String keyword = "";
@@ -50,7 +58,15 @@ public class ShopService
 		{
 			keyword = query;
 		}
-		Collection<Product> products = shop.getProducts(keyword);
+		
+		Products products = new Products();
+		List<ProductImpl> items = new ArrayList<ProductImpl>();
+		for(Product product: shop.getProducts(keyword)){
+			items.add((ProductImpl) product);
+			
+		}
+		
+		products.setProducts(items);
 
 		return products;
 	}
@@ -58,12 +74,9 @@ public class ShopService
 	@GET
 	@Path("/product/{id}")
 	@Produces("application/json")
-	public List<Product> getProduct(@PathParam("id") final int id)
+	public ProductImpl getProduct(@PathParam("id") final int id)
 	{
 
-		List<Product> products = new ArrayList<Product>();
-		products.add(shop.findProduct(id));
-
-		return products;
+		return (ProductImpl) shop.findProduct(id);
 	}
 }
