@@ -70,6 +70,7 @@ public class Products extends Activity implements OnClickListener{
             	
             	TableRow row = new TableRow(this);
             	row.setId(id + 1000);
+            	row.setPadding(5,3, 5, 3);
             	row.setBaselineAligned(true);
             	row.setGravity(Gravity.CENTER_VERTICAL);
             	

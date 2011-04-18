@@ -17,14 +17,17 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-public class Product extends Activity{
+public class Product extends Activity implements OnClickListener{
 	
 	private static String TAG = "Products";
 	private int id = 0;
@@ -63,7 +66,7 @@ public class Product extends Activity{
             	txtPrice.setText("£" + price);
             	
             	TextView txtDescription = (TextView) findViewById(R.id.txtDescription);
-            	txtDescription.setText(description);
+            	txtDescription.setText(description.replace("<br />", "\n"));
 
 			}
 		}
@@ -72,7 +75,10 @@ public class Product extends Activity{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-				
+		
+		
+		Button btnBuy  = (Button) findViewById(R.id.btnBuy);
+		btnBuy.setOnClickListener(this);
 	}
 	
 	private Bitmap getImageBitmap(String url) {
@@ -95,5 +101,17 @@ public class Product extends Activity{
            Log.e(TAG, "Error getting bitmap", e);
        }
        return bm;
-    } 
+    }
+
+	@Override
+	public void onClick(View v)
+	{
+		// TODO Auto-generated method stub
+		switch(v.getId())
+		{
+			case R.id.btnBuy:
+				// Call RestEasy here to buy this product
+			break;
+		}
+	} 
 }
