@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -17,6 +18,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
@@ -24,7 +27,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-public class Products extends Activity{
+public class Products extends Activity implements OnClickListener{
 	
 	private static String TAG = "Products";
 
@@ -43,6 +46,7 @@ public class Products extends Activity{
 			JSONArray products = json.getJSONArray("products");
 			for(int i=0; i < products.length(); i ++)
 			{
+				int id = ((JSONObject) products.get(i)).getInt("id");
 				String name = ((JSONObject) products.get(i)).getString("name");
 				String price = ((JSONObject) products.get(i)).getString("price");
 				String picture = ((JSONObject) products.get(i)).getString("picture");
@@ -65,6 +69,7 @@ public class Products extends Activity{
             	txtPrice.setLayoutParams(new LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
             	
             	TableRow row = new TableRow(this);
+            	row.setId(id + 1000);
             	row.setBaselineAligned(true);
             	row.setGravity(Gravity.CENTER_VERTICAL);
             	
@@ -78,6 +83,7 @@ public class Products extends Activity{
             	 row.addView(img, new TableRow.LayoutParams());
                  row.addView(txtName, new TableRow.LayoutParams(1));
                  row.addView(txtPrice, new TableRow.LayoutParams());
+                 row.setOnClickListener(this);
                  table.addView(row, new TableLayout.LayoutParams());
 			}
 		}
@@ -109,5 +115,15 @@ public class Products extends Activity{
            Log.e(TAG, "Error getting bitmap", e);
        }
        return bm;
-    } 
+    }
+
+	@Override
+	public void onClick(View v)
+	{
+		// TODO Auto-generated method stub
+		
+		Intent productWindow = new Intent(this, Product.class);
+		productWindow.putExtra("id", v.getId()-1000);
+		startActivity(productWindow);
+	} 
 }

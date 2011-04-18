@@ -27,10 +27,9 @@
     	android:stretchColumns="*">
 	<TableRow>
     <Button android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/products_label" android:id="@+id/products_button"></Button>
-    <Button android:text="@string/register_label" android:id="@+id/register_button" android:layout_width="fill_parent" android:layout_height="wrap_content"></Button>
+    <Button android:id="@+id/about_button" android:layout_width="fill_parent" android:text="@string/about_label" android:layout_height="wrap_content"></Button>
     </TableRow>
     <TableRow>
-    <Button android:text="@string/about_label" android:id="@+id/about_button" android:layout_width="fill_parent" android:layout_height="wrap_content"></Button>
     <Button android:text="@string/exit_label" android:id="@+id/exit_button" android:layout_width="fill_parent" android:layout_height="wrap_content"></Button>
 	</TableRow>
 	</TableLayout>
