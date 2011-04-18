@@ -49,7 +49,7 @@ public class ShopService
 
 	@GET
 	@Path("/products")
-	@Produces("application/json")
+	@Produces({"application/json","application/xml"})
 	public Products getProducts(
 			@QueryParam("keyword") final String query)
 	{
@@ -73,7 +73,7 @@ public class ShopService
 
 	@GET
 	@Path("/product/{id}")
-	@Produces("application/json")
+	@Produces({"application/json","application/xml"})
 	public ProductImpl getProduct(@PathParam("id") final int id)
 	{
 
