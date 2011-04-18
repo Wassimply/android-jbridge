@@ -54,7 +54,7 @@ public class Product extends Activity{
 				String description = json.getString("description");
  
 				ImageView img = (ImageView) findViewById(R.id.imgProduct);
-				img.setImageBitmap(this.getImageBitmap("http://10.0.2.2:8080/JBridge/products/thumbnails/" + picture));
+				img.setImageBitmap(this.getImageBitmap("http://10.0.2.2:8080/JBridge/products/" + picture));
 		                  
 		        TextView txtName = (TextView) findViewById(R.id.txtName);
             	txtName.setText(name + " (" + quantity + ")");

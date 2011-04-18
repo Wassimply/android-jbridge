@@ -12,15 +12,13 @@
 			android:gravity="center" android:textSize="20dip" android:textStyle="bold"
 			android:textColor="@color/item_text" android:id="@+id/txtName"></TextView>
 		<ImageView android:src="@drawable/icon"
-			android:layout_gravity="center" android:layout_width="200dip"
-			android:layout_height="120dip" android:id="@+id/imgProduct"></ImageView>
+			android:layout_gravity="center" android:id="@+id/imgProduct" android:layout_width="match_parent" android:layout_height="200dip" android:padding="3dip"></ImageView>
 		<TextView android:layout_height="wrap_content"
 			android:layout_width="match_parent" android:text="TextView"
 			android:gravity="center" android:textColor="@color/item_price"
 			android:textSize="16dip" android:textStyle="bold" android:id="@+id/txtPrice"></TextView>
 		<TextView android:textColor="@color/item_text"
-			android:layout_height="wrap_content" android:layout_width="wrap_content"
-			android:text="TextView" android:textSize="16dip" android:id="@+id/txtDescription"></TextView>
+			android:layout_height="wrap_content" android:text="TextView" android:textSize="16dip" android:id="@+id/txtDescription" android:layout_width="match_parent" android:padding="20dip"></TextView>
 	</LinearLayout>
 </LinearLayout>
 
