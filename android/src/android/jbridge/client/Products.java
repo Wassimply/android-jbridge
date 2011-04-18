@@ -24,7 +24,10 @@ import android.widget.ImageView.ScaleType;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-
+/**
+ * 
+ * @author Majid Khosravi
+ */
 public class Products extends Activity implements OnClickListener{
 	
 	private static String TAG = "Products";

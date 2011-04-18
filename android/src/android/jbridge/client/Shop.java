@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-
+/**
+ * 
+ * @author Majid Khosravi
+ */
 public class Shop extends Activity implements OnClickListener{
     /** Called when the activity is first created. */
     @Override

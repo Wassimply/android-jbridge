@@ -18,7 +18,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+/**
+ * 
+ * @author Majid Khosravi
+ */
 public class Product extends Activity implements OnClickListener{
 	
 	private static String TAG = "Products";

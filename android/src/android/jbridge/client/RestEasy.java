@@ -12,7 +12,10 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
- 
+/**
+ * 
+ * @author Majid Khosravi
+ */ 
 public class RestEasy {
 	 
     private static String convertStreamToString(InputStream is) {
@@ -56,7 +59,7 @@ public class RestEasy {
         // Prepare a request object
         HttpGet httpget = new HttpGet(url); 
         
-        // accept JSON from RestEasy web service
+        // Accept JSON
         httpget.addHeader("accept", "application/json");
  
         // Execute the request
