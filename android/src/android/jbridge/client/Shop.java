@@ -1,8 +1,5 @@
 package android.jbridge.client;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.content.Intent;
@@ -24,18 +21,6 @@ public class Shop extends Activity implements OnClickListener{
         
         View exitButton = findViewById(R.id.exit_button);
         exitButton.setOnClickListener(this);
-        
-        
-		String jsonTxt = "[{color: \"yellow\",value: \"#ff0\"},{color: \"black\",value: \"#000\"}]";
-		try
-		{
-			JSONObject jsonResponse = new JSONObject(jsonTxt);
-		}
-		catch (JSONException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
         
     }
 
