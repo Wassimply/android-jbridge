@@ -37,6 +37,14 @@ public class Products extends Activity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.products);
 		
+
+		
+		loadProducts();
+		
+	}
+	
+	private void loadProducts()
+	{
 		final TableLayout table = (TableLayout) findViewById(R.id.tableLayout1);		
 		table.removeAllViews();
 		
@@ -94,7 +102,7 @@ public class Products extends Activity implements OnClickListener{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-				
+		
 	}
 	
 	private Bitmap getImageBitmap(String url) {

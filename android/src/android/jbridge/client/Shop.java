@@ -15,7 +15,7 @@ public class Shop extends Activity implements OnClickListener{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        
+                
         View addProductButton = findViewById(R.id.btnAddProduct);
         addProductButton.setOnClickListener(this);
         

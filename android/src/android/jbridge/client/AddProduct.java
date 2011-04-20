@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -17,8 +16,6 @@ import android.widget.EditText;
 
 public class AddProduct extends Activity implements OnClickListener{
 	
-	private static String TAG = "AddProduct";
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
