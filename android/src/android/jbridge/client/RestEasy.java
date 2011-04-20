@@ -8,6 +8,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -16,6 +17,8 @@ import org.apache.http.message.BasicHeader;
 import org.apache.http.protocol.HTTP;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.util.Log;
 /**
  * 
  * @author Majid Khosravi
@@ -63,6 +66,14 @@ public class RestEasy {
         request.addHeader("accept", "application/json");
         
         return httpclient.execute(request);
+    }
+    
+    public static void doDelete(String url) throws ClientProtocolException, IOException{
+    	HttpClient httpclient = new DefaultHttpClient();
+    	HttpDelete delete = new HttpDelete(url);
+    	Log.v("Test", url);
+    	delete.addHeader("accept", "application/json");
+    	httpclient.execute(delete);
     }
 
  

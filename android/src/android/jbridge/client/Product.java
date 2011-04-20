@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
+
+import org.apache.http.client.ClientProtocolException;
 import org.json.JSONException;
 import org.json.JSONObject;
 import android.app.Activity;
@@ -31,6 +33,13 @@ public class Product extends Activity implements OnClickListener{
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.product);
+		
+		View delProduct = (Button) findViewById(R.id.btnDel);
+		delProduct.setOnClickListener(this);
+		
+		View buyProduct = (Button) findViewById(R.id.btnBuy);
+		buyProduct.setOnClickListener(this);
+
 		
 		Bundle extras = getIntent().getExtras();
 		if(extras !=null)
@@ -104,7 +113,23 @@ public class Product extends Activity implements OnClickListener{
 		// TODO Auto-generated method stub
 		switch(v.getId())
 		{
-			case R.id.btnBuy:
+		case R.id.btnDel:
+			try
+			{
+				RestEasy.doDelete(getResources().getString(R.string.resteasy_url) + "/product/" + id + "/delete");
+			}
+			catch (ClientProtocolException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			catch (IOException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+		case R.id.btnBuy:
 				// Call RestEasy here to buy this product
 			break;
 		}

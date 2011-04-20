@@ -18,6 +18,7 @@
 		<TextView android:textColor="@color/item_text"
 			android:layout_height="wrap_content" android:text="TextView" android:textSize="16dip" android:id="@+id/txtDescription" android:layout_width="match_parent" android:padding="20dip"></TextView>
 		<Button android:gravity="center|center_vertical|fill_horizontal|center_horizontal" android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_gravity="center" android:text="@string/buy" android:id="@+id/btnBuy"></Button>
+		<Button android:gravity="center|center_vertical|fill_horizontal|center_horizontal" android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_gravity="center" android:text="@string/delproduct_label" android:id="@+id/btnDel"></Button>
 </LinearLayout>
 </ScrollView>
 </LinearLayout>
