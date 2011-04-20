@@ -8,6 +8,8 @@ public interface ShopBean
 {
 	void addProduct(String name, String picture, double price,
 			Integer quantity, String description);
+	
+	void delProduct(Integer id);
 
 	Product findProduct(Integer id);
 

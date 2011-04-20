@@ -126,6 +126,14 @@ public class ShopService
 		return (ProductImpl) shop.findProduct(id);
 	}
 	
+	@DELETE
+	@Path("/product/{id}/delete")
+	@Produces({"application/json","application/xml"})
+	public void delProduct(@PathParam("id") final int id)
+	{
+		shop.delProduct(id);
+	}
+	
 	 private static String convertStreamToString(InputStream is) {
 	        /*
 	         * To convert the InputStream to String we use the BufferedReader.readLine()

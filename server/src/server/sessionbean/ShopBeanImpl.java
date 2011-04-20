@@ -45,6 +45,10 @@ public class ShopBeanImpl implements ShopBean, java.io.Serializable
 				description);
 		em.persist(product);
 	}
+	
+	public void delProduct(Integer id){
+		em.remove(findProduct(id));
+	}
 
 	// Find a product by id
 	@Override
