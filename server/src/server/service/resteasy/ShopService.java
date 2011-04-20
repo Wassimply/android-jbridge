@@ -126,6 +126,15 @@ public class ShopService
 		return (ProductImpl) shop.findProduct(id);
 	}
 	
+	@PUT
+	@Path("/product/{id}/buy")
+	@Consumes({"application/json", "application/xml"}) 
+	public Response buyProduct(@PathParam("id") final int id, InputStream is) {
+		Product product = readProduct(is);
+		shop.buyProduct(id, product.getQuantity());
+		return Response.created(URI.create("/product/" + id)).build();
+	}
+	
 	@DELETE
 	@Path("/product/{id}/delete")
 	@Produces({"application/json","application/xml"})

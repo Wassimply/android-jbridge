@@ -14,6 +14,8 @@ public interface ShopBean
 	Product findProduct(Integer id);
 
 	Collection<Product> getProducts(String keyword);
+	
+	void buyProduct(Integer id, Integer quantity);
 
 	void checkout(ArrayList<Product> basket);
 
