@@ -10,6 +10,10 @@ import org.apache.http.client.ClientProtocolException;
 import org.json.JSONException;
 import org.json.JSONObject;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.res.Resources.NotFoundException;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -18,6 +22,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 /**
@@ -28,6 +33,11 @@ public class Product extends Activity implements OnClickListener{
 	
 	private static String TAG = "Products";
 	private int id = 0;
+	private String name = "";
+	private double price = 0;
+	private String picture = "";
+	private int quantity = 0;
+	private String description = "";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
@@ -54,11 +64,11 @@ public class Product extends Activity implements OnClickListener{
 			//JSONObject product = json.getJSONObject("product");
 			if( json != null )
 			{
-				String name = json.getString("name");
-				String price =  json.getString("price");
-				String picture = json.getString("picture");
-				String quantity = json.getString("quantity"); 
-				String description = json.getString("description");
+				 name = json.getString("name");
+				 price =  json.getDouble("price");
+				 picture = json.getString("picture");
+				 quantity = json.getInt("quantity"); 
+				 description = json.getString("description");
  
 				ImageView img = (ImageView) findViewById(R.id.imgProduct);
 				img.setImageBitmap(this.getImageBitmap("http://10.0.2.2:8080/JBridge/products/" + picture));
@@ -130,7 +140,56 @@ public class Product extends Activity implements OnClickListener{
 			}
 			break;
 		case R.id.btnBuy:
-				// Call RestEasy here to buy this product
+			JSONObject json = new JSONObject();
+
+			try
+			{
+				json.put("name", name);
+				json.put("price", price);
+				json.put("picture", picture);
+				json.put("quantity", 1);
+				json.put("description", description);
+				
+				RestEasy.doPut(getResources().getString(R.string.resteasy_url) + "/product/" + id + "/buy", json);
+				
+				
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
+				builder.setMessage("Product purchased successfully.")
+				       .setCancelable(false)
+				       .setNegativeButton("OK", new DialogInterface.OnClickListener() {
+				           public void onClick(DialogInterface dialog, int id) {
+				                Product.this.finish();
+				                Intent productsWindow = new Intent(Product.this, Products.class);
+				                startActivity(productsWindow);
+				           }
+				       });
+
+				AlertDialog alert = builder.create();
+				alert.show();
+				
+			}
+			catch (JSONException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			catch (ClientProtocolException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			catch (NotFoundException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			catch (IOException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
 			break;
 		}
 	} 
