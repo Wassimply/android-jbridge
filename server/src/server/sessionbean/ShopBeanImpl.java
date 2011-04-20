@@ -44,7 +44,6 @@ public class ShopBeanImpl implements ShopBean, java.io.Serializable
 		Product product = new ProductImpl(name, picture, price, quantity,
 				description);
 		em.persist(product);
-
 	}
 
 	// Find a product by id

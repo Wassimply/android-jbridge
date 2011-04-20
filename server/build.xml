@@ -74,6 +74,7 @@
          <zipfileset dir="${build.classes.dir}" prefix="WEB-INF/classes">
             <include name="server/servlet/*.class"/>
             <include name="server/service/resteasy/*.class"/>
+         	<include name="org/json/*.class"/>
          </zipfileset>
          <zipfileset dir="web" prefix="WEB-INF/lib">
             <include name="lib/*.jar" />
