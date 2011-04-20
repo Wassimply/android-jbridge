@@ -17,10 +17,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 /**
@@ -121,88 +124,119 @@ public class Product extends Activity implements OnClickListener{
 		// TODO Auto-generated method stub
 		switch(v.getId())
 		{
+		
 		case R.id.btnDel:
-			try
-			{
-				RestEasy.doDelete(getResources().getString(R.string.resteasy_url) + "/product/" + id + "/delete");
-				
-				AlertDialog.Builder builder = new AlertDialog.Builder(this);
-				builder.setMessage("Product removed successfully.")
-				       .setCancelable(false)
-				       .setNegativeButton("OK", new DialogInterface.OnClickListener() {
-				           public void onClick(DialogInterface dialog, int id) {
-				                Product.this.finish();
-				                Intent productsWindow = new Intent(Product.this, Products.class);
-				                startActivity(productsWindow);
-				           }
-				       });
-
-				AlertDialog alert = builder.create();
-				alert.show();
-			}
-			catch (ClientProtocolException e)
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			catch (IOException e)
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			delProduct(id);
 			break;
-		case R.id.btnBuy:
-			JSONObject json = new JSONObject();
-
-			try
-			{
-				json.put("name", name);
-				json.put("price", price);
-				json.put("picture", picture);
-				json.put("quantity", 1);
-				json.put("description", description);
-				
-				RestEasy.doPut(getResources().getString(R.string.resteasy_url) + "/product/" + id + "/buy", json);
-				
-				
-				AlertDialog.Builder builder = new AlertDialog.Builder(this);
-				builder.setMessage("Product purchased successfully.")
-				       .setCancelable(false)
-				       .setNegativeButton("OK", new DialogInterface.OnClickListener() {
-				           public void onClick(DialogInterface dialog, int id) {
-				                Product.this.finish();
-				                Intent productsWindow = new Intent(Product.this, Products.class);
-				                startActivity(productsWindow);
-				           }
-				       });
-
-				AlertDialog alert = builder.create();
-				alert.show();
-				
-			}
-			catch (JSONException e)
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			catch (ClientProtocolException e)
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			catch (NotFoundException e)
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			catch (IOException e)
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 			
+		case R.id.btnBuy:
+			
+			AlertDialog.Builder qtyDialog = new AlertDialog.Builder(this);
+			qtyDialog.setTitle(getResources().getString(R.string.product_quantity));
+			qtyDialog.setMessage(getResources().getString(R.string.quantity_dialog_text));
+
+			// Set an EditText view to get user input 
+			final EditText input = new EditText(this);
+			input.setInputType(InputType.TYPE_CLASS_NUMBER);
+			qtyDialog.setView(input);
+
+			qtyDialog.setPositiveButton(getResources().getString(R.string.buy), new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int whichButton) {
+			  String value = input.getText().toString();
+			  	int q = Integer.parseInt(value);
+			  	buy(q);
+			  }
+			});
+
+			qtyDialog.show();
 			
 			break;
 		}
 	} 
+	
+	// Delete a product by id
+	private void delProduct(int id)
+	{
+		try
+		{
+			RestEasy.doDelete(getResources().getString(R.string.resteasy_url) + "/product/" + id + "/delete");
+			
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setMessage("Product removed successfully.")
+			       .setCancelable(false)
+			       .setNegativeButton("OK", new DialogInterface.OnClickListener() {
+			           public void onClick(DialogInterface dialog, int id) {
+			                Product.this.finish();
+			                Intent productsWindow = new Intent(Product.this, Products.class);
+			                startActivity(productsWindow);
+			           }
+			       });
+
+			AlertDialog alert = builder.create();
+			alert.show();
+		}
+		catch (ClientProtocolException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	// Buy the product by given quantity
+	private void buy(int newQty)
+	{
+		JSONObject json = new JSONObject();
+
+		try
+		{
+			json.put("name", name);
+			json.put("price", price);
+			json.put("picture", picture);
+			json.put("quantity", newQty);
+			json.put("description", description);
+			
+			RestEasy.doPut(getResources().getString(R.string.resteasy_url) + "/product/" + id + "/buy", json);
+			
+			
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setMessage("Product purchased successfully.")
+			       .setCancelable(false)
+			       .setNegativeButton("OK", new DialogInterface.OnClickListener() {
+			           public void onClick(DialogInterface dialog, int id) {
+			                Product.this.finish();
+			                Intent productsWindow = new Intent(Product.this, Products.class);
+			                startActivity(productsWindow);
+			           }
+			       });
+
+			AlertDialog alert = builder.create();
+			alert.show();
+			
+		}
+		catch (JSONException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		catch (ClientProtocolException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		catch (NotFoundException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
