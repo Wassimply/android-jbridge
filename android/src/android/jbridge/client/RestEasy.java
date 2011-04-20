@@ -55,8 +55,13 @@ public class RestEasy {
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost request = new HttpPost(url);
         StringEntity s = new StringEntity(c.toString());
-        s.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+        //s.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+        s.setContentEncoding("UTF-8");
+        s.setContentType("application/json");
+
         request.setEntity(s);
+        request.addHeader("accept", "application/json");
+        
         return httpclient.execute(request);
     }
 

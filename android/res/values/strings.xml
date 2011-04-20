@@ -16,4 +16,5 @@
     <string name="product_picture">Picture:</string>
     <string name="product_quantity">Quantity:</string>
     <string name="product_description">Description:</string>
+    <string name="resteasy_url">"http://10.0.2.2:8080/JBridge/RestEasy"</string>
 </resources>
