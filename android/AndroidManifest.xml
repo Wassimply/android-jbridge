@@ -21,5 +21,7 @@
         <activity android:label="@string/about_title" android:name=".About"></activity>
         <activity android:label="@string/products_title" android:name=".Products"></activity>
 		<activity android:label="@string/products_title" android:name=".Product"></activity>
+		<activity android:label="@string/products_title" android:name=".AddProduct"></activity>
+
     </application>
 </manifest>

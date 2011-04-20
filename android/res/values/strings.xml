@@ -10,4 +10,10 @@
     <string name="products_title">Products</string>
     <string name="item_height">80dip</string>
     <string name="buy">Buy Now</string>
+    <string name="addproduct_label">Add Product</string>
+    <string name="product_name">Name:</string>
+    <string name="product_price">Price:</string>
+    <string name="product_picture">Picture:</string>
+    <string name="product_quantity">Quantity:</string>
+    <string name="product_description">Description:</string>
 </resources>

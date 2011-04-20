@@ -9,7 +9,11 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicHeader;
+import org.apache.http.protocol.HTTP;
 import org.json.JSONException;
 import org.json.JSONObject;
 /**
@@ -44,6 +48,18 @@ public class RestEasy {
         }
         return sb.toString();
     }
+    
+    // Post JSON to the resteasy web service
+    public static HttpResponse doPost(String url, JSONObject c) throws ClientProtocolException, IOException 
+    {
+        HttpClient httpclient = new DefaultHttpClient();
+        HttpPost request = new HttpPost(url);
+        StringEntity s = new StringEntity(c.toString());
+        s.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+        request.setEntity(s);
+        return httpclient.execute(request);
+    }
+
  
     /* This is a test function which will connects to a given
      * rest service and prints it's response to Android Log with

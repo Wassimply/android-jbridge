@@ -16,6 +16,9 @@ public class Shop extends Activity implements OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
+        View addProductButton = findViewById(R.id.btnAddProduct);
+        addProductButton.setOnClickListener(this);
+        
         View productsButton = findViewById(R.id.products_button);
         productsButton.setOnClickListener(this);
         
@@ -31,6 +34,10 @@ public class Shop extends Activity implements OnClickListener{
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch(v.getId()){
+		case R.id.btnAddProduct:
+			Intent addProductWindow = new Intent(this, AddProduct.class);
+			startActivity(addProductWindow);
+			break;
 		case R.id.products_button:
 			Intent productsWindow = new Intent(this, Products.class);
 			startActivity(productsWindow);
