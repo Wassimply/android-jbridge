@@ -127,6 +127,20 @@ public class Product extends Activity implements OnClickListener{
 			try
 			{
 				RestEasy.doDelete(getResources().getString(R.string.resteasy_url) + "/product/" + id + "/delete");
+				
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
+				builder.setMessage("Product removed successfully.")
+				       .setCancelable(false)
+				       .setNegativeButton("OK", new DialogInterface.OnClickListener() {
+				           public void onClick(DialogInterface dialog, int id) {
+				                Product.this.finish();
+				                Intent productsWindow = new Intent(Product.this, Products.class);
+				                startActivity(productsWindow);
+				           }
+				       });
+
+				AlertDialog alert = builder.create();
+				alert.show();
 			}
 			catch (ClientProtocolException e)
 			{

@@ -7,6 +7,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -41,6 +44,20 @@ public class AddProduct extends Activity implements OnClickListener{
 				json.put("description", ((EditText) findViewById(R.id.txtDescription)).getText());
 				
 				RestEasy.doPost(getResources().getString(R.string.resteasy_url) + "/addProduct", json);
+				
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
+				builder.setMessage("Product added successfully.")
+				       .setCancelable(false)
+				       .setNegativeButton("OK", new DialogInterface.OnClickListener() {
+				           public void onClick(DialogInterface dialog, int id) {
+				                AddProduct.this.finish();
+				                Intent productsWindow = new Intent(AddProduct.this, Products.class);
+				                startActivity(productsWindow);
+				           }
+				       });
+
+				AlertDialog alert = builder.create();
+				alert.show();
 			}
 			catch (JSONException e)
 			{
