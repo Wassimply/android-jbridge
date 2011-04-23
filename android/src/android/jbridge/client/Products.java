@@ -48,7 +48,7 @@ public class Products extends Activity implements OnClickListener{
 		final TableLayout table = (TableLayout) findViewById(R.id.tableLayout1);		
 		table.removeAllViews();
 		
-		JSONObject json =RestEasy.connect("http://10.0.2.2:8080/JBridge/RestEasy/products");
+		JSONObject json =RestEasy.doGet("http://10.0.2.2:8080/JBridge/RestEasy/products");
 		
 		try
 		{

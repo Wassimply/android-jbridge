@@ -24,6 +24,101 @@ import android.util.Log;
  */ 
 public class RestEasy {
 	 
+    
+    // Post JSON to the resteasy web service
+    public static HttpResponse doPost(String url, JSONObject c) throws ClientProtocolException, IOException 
+    {
+        HttpClient httpclient = new DefaultHttpClient();
+        HttpPost request = new HttpPost(url);
+        StringEntity s = new StringEntity(c.toString());
+        //s.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+        s.setContentEncoding("UTF-8");
+        s.setContentType("application/json");
+
+        request.setEntity(s);
+        request.addHeader("accept", "application/json");
+        
+        return httpclient.execute(request);
+    }
+    
+    // Put JSON to the resteasy web services
+    public static HttpResponse doPut(String url, JSONObject c) throws ClientProtocolException, IOException
+    {
+    	HttpClient httpclient = new DefaultHttpClient();
+    	HttpPut request = new HttpPut(url);
+    	StringEntity s = new StringEntity(c.toString());
+    	s.setContentEncoding("UTF-8");
+        s.setContentType("application/json");
+
+        request.setEntity(s);
+        request.addHeader("accept", "application/json");
+        
+        return httpclient.execute(request);
+    	
+    }
+    
+    // Delete a resource in the resteasy web services
+    public static void doDelete(String url) throws ClientProtocolException, IOException{
+    	HttpClient httpclient = new DefaultHttpClient();
+    	HttpDelete delete = new HttpDelete(url);
+    	Log.v("Test", url);
+    	delete.addHeader("accept", "application/json");
+    	httpclient.execute(delete);
+    }
+
+ 
+    // Retreive a resource from the resteasy web service
+    public static JSONObject doGet(String url)
+    {
+    	JSONObject json = null;
+    	
+        HttpClient httpclient = new DefaultHttpClient();
+ 
+        // Prepare a request object
+        HttpGet httpget = new HttpGet(url); 
+        
+        // Accept JSON
+        httpget.addHeader("accept", "application/json");
+ 
+        // Execute the request
+        HttpResponse response;
+        try {
+            response = httpclient.execute(httpget);
+ 
+            // Get the response entity
+            HttpEntity entity = response.getEntity();
+            
+            // If response entity is not null 
+            if (entity != null) {
+ 
+                // get entity contents and convert it to string
+                InputStream instream = entity.getContent();
+                String result= convertStreamToString(instream);
+ 
+                // construct a JSON object with result
+                json=new JSONObject(result);
+     
+                // Closing the input stream will trigger connection release
+                instream.close();
+            }
+             
+        } catch (ClientProtocolException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+        // Return the json
+        return json;
+    }
+    
+    
+    // Convert Inputstream to string
     private static String convertStreamToString(InputStream is) {
         /*
          * To convert the InputStream to String we use the BufferedReader.readLine()
@@ -49,102 +144,6 @@ public class RestEasy {
             }
         }
         return sb.toString();
-    }
-    
-    // Post JSON to the resteasy web service
-    public static HttpResponse doPost(String url, JSONObject c) throws ClientProtocolException, IOException 
-    {
-        HttpClient httpclient = new DefaultHttpClient();
-        HttpPost request = new HttpPost(url);
-        StringEntity s = new StringEntity(c.toString());
-        //s.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
-        s.setContentEncoding("UTF-8");
-        s.setContentType("application/json");
-
-        request.setEntity(s);
-        request.addHeader("accept", "application/json");
-        
-        return httpclient.execute(request);
-    }
-    
-    public static HttpResponse doPut(String url, JSONObject c) throws ClientProtocolException, IOException
-    {
-    	HttpClient httpclient = new DefaultHttpClient();
-    	HttpPut request = new HttpPut(url);
-    	StringEntity s = new StringEntity(c.toString());
-    	s.setContentEncoding("UTF-8");
-        s.setContentType("application/json");
-
-        request.setEntity(s);
-        request.addHeader("accept", "application/json");
-        
-        return httpclient.execute(request);
-    	
-    }
-    
-    public static void doDelete(String url) throws ClientProtocolException, IOException{
-    	HttpClient httpclient = new DefaultHttpClient();
-    	HttpDelete delete = new HttpDelete(url);
-    	Log.v("Test", url);
-    	delete.addHeader("accept", "application/json");
-    	httpclient.execute(delete);
-    }
-
- 
-    /* This is a test function which will connects to a given
-     * rest service and prints it's response to Android Log with
-     * labels "Praeda".
-     */
-    public static JSONObject connect(String url)
-    {
-    	JSONObject json = null;
-    	
-        HttpClient httpclient = new DefaultHttpClient();
-        
- 
-        // Prepare a request object
-        HttpGet httpget = new HttpGet(url); 
-        
-        // Accept JSON
-        httpget.addHeader("accept", "application/json");
- 
-        // Execute the request
-        HttpResponse response;
-        try {
-            response = httpclient.execute(httpget);
- 
-            // Get hold of the response entity
-            HttpEntity entity = response.getEntity();
-            // If the response does not enclose an entity, there is no need
-            // to worry about connection release
- 
-            if (entity != null) {
- 
-                // A Simple JSON Response Read
-                InputStream instream = entity.getContent();
-                String result= convertStreamToString(instream);
- 
-                // A Simple JSONObject Creation
-                json=new JSONObject(result);
-     
- 
-                // Closing the input stream will trigger connection release
-                instream.close();
-            }
-             
-        } catch (ClientProtocolException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (JSONException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        
-        return json;
-
-    }
+    }    
  
 }

@@ -58,7 +58,7 @@ public class Product extends Activity implements OnClickListener{
 			id = extras.getInt("id");
 		}
 
-		JSONObject json =RestEasy.connect("http://10.0.2.2:8080/JBridge/RestEasy/product/" + id);
+		JSONObject json =RestEasy.doGet("http://10.0.2.2:8080/JBridge/RestEasy/product/" + id);
 		
 		try
 		{
