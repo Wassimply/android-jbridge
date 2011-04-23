@@ -22,8 +22,8 @@
     android:layout_marginBottom="20dip" android:textColor="@color/item_text"/>
 <Button android:layout_height="wrap_content" android:text="@string/addproduct_label" android:layout_width="match_parent" android:id="@+id/btnAddProduct"></Button>
     <Button android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/products_button" android:text="@string/products_label"></Button>
+    <Button android:text="@string/settings_label" android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/setting_button"></Button>
     <Button android:text="@string/about_label" android:id="@+id/about_button" android:layout_width="fill_parent" android:layout_height="wrap_content"></Button>
-    <Button android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/setting_button" android:text="@string/settings_label"></Button>
     <Button android:text="@string/exit_label" android:id="@+id/exit_button" android:layout_width="fill_parent" android:layout_height="wrap_content"></Button>
 
 </LinearLayout>
