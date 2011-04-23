@@ -17,6 +17,10 @@
     <string name="product_quantity">Quantity:</string>
     <string name="quantity_dialog_text">Enter product quantity</string>
     <string name="product_description">Description:</string>
-    <string name="resteasy_url">"http://10.0.2.2:8080/JBridge/RestEasy"</string>
     <string name="delproduct_label">Delete Product</string>
+    <string name="settings_label">Settings</string>
+    <string name="settings_title">Android-JBridge Settings</string>
+    <string name="server_address">Web server address</string>
+    <string name="server_address_default">http://10.0.2.2:8080</string>
+    <string name="server_msg">Enter the web server address</string>
 </resources>

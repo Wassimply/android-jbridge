@@ -25,6 +25,9 @@ public class Shop extends Activity implements OnClickListener{
         View aboutButton = findViewById(R.id.about_button);
         aboutButton.setOnClickListener(this);
         
+        View settingButton = findViewById(R.id.setting_button);
+        settingButton.setOnClickListener(this);
+        
         View exitButton = findViewById(R.id.exit_button);
         exitButton.setOnClickListener(this);
         
@@ -45,6 +48,10 @@ public class Shop extends Activity implements OnClickListener{
 		case R.id.about_button:
 			Intent aboutWindow = new Intent(this, About.class);
 			startActivity(aboutWindow);
+			break;
+		case R.id.setting_button:
+			Intent settingWindow = new Intent(this, Settings.class);
+			startActivity(settingWindow);
 			break;
 		case R.id.exit_button:
 			finish();
