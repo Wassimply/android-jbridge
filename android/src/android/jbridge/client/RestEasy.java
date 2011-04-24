@@ -31,7 +31,6 @@ public class RestEasy {
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost request = new HttpPost(url);
         StringEntity s = new StringEntity(c.toString());
-        //s.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
         s.setContentEncoding("UTF-8");
         s.setContentType("application/json");
 
@@ -61,13 +60,12 @@ public class RestEasy {
     public static void doDelete(String url) throws ClientProtocolException, IOException{
     	HttpClient httpclient = new DefaultHttpClient();
     	HttpDelete delete = new HttpDelete(url);
-    	Log.v("Test", url);
     	delete.addHeader("accept", "application/json");
     	httpclient.execute(delete);
     }
 
  
-    // Retreive a resource from the resteasy web service
+    // Retrieve a resource from the resteasy web service
     public static JSONObject doGet(String url)
     {
     	JSONObject json = null;
