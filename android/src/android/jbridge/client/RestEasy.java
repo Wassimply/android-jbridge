@@ -117,7 +117,7 @@ public class RestEasy {
     
     
     // Convert Inputstream to string
-    private static String convertStreamToString(InputStream is) {
+    public static String convertStreamToString(InputStream is) {
         /*
          * To convert the InputStream to String we use the BufferedReader.readLine()
          * method. We iterate until the BufferedReader return null which means
