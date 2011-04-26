@@ -40,7 +40,7 @@ public class AddProduct extends Activity implements OnClickListener{
 				json.put("quantity", ((EditText) findViewById(R.id.txtQuantity)).getText());
 				json.put("description", ((EditText) findViewById(R.id.txtDescription)).getText());
 				
-				RestEasy.doPost(Settings.getServerAddress(getBaseContext()) + "/JBridge/RestEasy/addProduct", json);
+				RestEasy.doPost(Settings.getServerAddress(getBaseContext()) + "/RestEasy/addProduct", json);
 				
 				AlertDialog.Builder builder = new AlertDialog.Builder(this);
 				builder.setMessage("Product added successfully.")

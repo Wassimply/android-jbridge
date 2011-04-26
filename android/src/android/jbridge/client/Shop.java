@@ -1,15 +1,8 @@
 package android.jbridge.client;
 
-import java.io.InputStream;
-import java.sql.Date;
-import java.util.Timer;
-
-import org.json.JSONException;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 /**
@@ -39,7 +32,7 @@ public class Shop extends Activity implements OnClickListener{
         exitButton.setOnClickListener(this);
         
         // Testing
-       // RestEasyTest.test();
+        //RestEasyTest.test();
 	
     }
 

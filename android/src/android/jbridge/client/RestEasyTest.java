@@ -1,17 +1,13 @@
 package android.jbridge.client;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -36,9 +32,7 @@ public class RestEasyTest
 		
 		String jsonTag = "JSON";
 		String xmlTag = "XML";
-		
-		System.out.println("Testing data size for JSON vs. XML------");
-    	
+		    	
 		// Testing JSON data size
 		InputStream jsonInputStream = RestEasyTest.doGet("http://10.0.2.2:8080/JBridge/RestEasy/products", "json");
     	long startTime = System.currentTimeMillis();
@@ -48,29 +42,28 @@ public class RestEasyTest
     	
     	// Testing XML data size
 		InputStream xmlInputStream = RestEasyTest.doGet("http://10.0.2.2:8080/JBridge/RestEasy/products", "xml");
-    	startTime = System.currentTimeMillis();
+    	 startTime = System.currentTimeMillis();
 		String strXML = RestEasy.convertStreamToString(xmlInputStream);
-    	endTime = System.currentTimeMillis();
+    	 endTime = System.currentTimeMillis();
     	Log.i(xmlTag, "XML loaded. XML data size: " + strXML.length() + " bytes  in (" + (endTime - startTime) + "miliseconds");
 
     	
     	
-    	System.out.println("Testing parsing time for JSON vs. XML------");
  
     	// Testing JSON parsing time
-		jsonInputStream = RestEasyTest.doGet("http://10.0.2.2:8080/JBridge/RestEasy/products", "json");
-    	startTime = System.currentTimeMillis();
+		 jsonInputStream = RestEasyTest.doGet("http://10.0.2.2:8080/JBridge/RestEasy/products", "json");
+    	 startTime = System.currentTimeMillis();
     	RestEasyTest.parseJSON(jsonInputStream);
-    	endTime = System.currentTimeMillis();
+    	 endTime = System.currentTimeMillis();
     	Log.v(jsonTag ,"Parsing JSON finished in: " + (endTime - startTime) + " miliseconds");
     	
     	// Testing XML parsing time	
-		xmlInputStream = RestEasyTest.doGet("http://10.0.2.2:8080/JBridge/RestEasy/products", "xml");
-    	startTime = System.currentTimeMillis();
+    	 xmlInputStream = RestEasyTest.doGet("http://10.0.2.2:8080/JBridge/RestEasy/products", "xml");
+    	 startTime = System.currentTimeMillis();
     	RestEasyTest.parseXML(xmlInputStream);
-    	endTime = System.currentTimeMillis();
+    	 endTime = System.currentTimeMillis();
     	Log.v(xmlTag ,"Parsing XML finished in: " + (endTime - startTime) + " miliseconds");
-		
+	
 	}
 	
 	// Retrieve a resource from the resteasy web service

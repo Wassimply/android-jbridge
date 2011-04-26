@@ -17,7 +17,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -58,7 +57,7 @@ public class Product extends Activity implements OnClickListener{
 			id = extras.getInt("id");
 		}
 
-		JSONObject json =RestEasy.doGet(Settings.getServerAddress(getBaseContext()) +"/JBridge/RestEasy/product/" + id);
+		JSONObject json =RestEasy.doGet(Settings.getServerAddress(getBaseContext()) +"/RestEasy/product/" + id);
 		
 		try
 		{
@@ -72,7 +71,7 @@ public class Product extends Activity implements OnClickListener{
 				 description = json.getString("description");
  
 				ImageView img = (ImageView) findViewById(R.id.imgProduct);
-				img.setImageBitmap(this.getImageBitmap(Settings.getServerAddress(getBaseContext()) +"/JBridge/products/" + picture));
+				img.setImageBitmap(this.getImageBitmap(Settings.getServerAddress(getBaseContext()) +"/products/" + picture));
 		                  
 		        TextView txtName = (TextView) findViewById(R.id.txtName);
             	txtName.setText(name + " (" + quantity + ")");
@@ -159,7 +158,7 @@ public class Product extends Activity implements OnClickListener{
 	{
 		try
 		{
-			RestEasy.doDelete(Settings.getServerAddress(getBaseContext()) + "/product/" + id + "/delete");
+			RestEasy.doDelete(Settings.getServerAddress(getBaseContext()) + "/RestEasy/product/" + id + "/delete");
 			
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setMessage("Product removed successfully.")
@@ -200,7 +199,7 @@ public class Product extends Activity implements OnClickListener{
 			json.put("quantity", newQty);
 			json.put("description", description);
 			
-			RestEasy.doPut(Settings.getServerAddress(getBaseContext()) + "/product/" + id + "/buy", json);
+			RestEasy.doPut(Settings.getServerAddress(getBaseContext()) + "/RestEasy/product/" + id + "/buy", json);
 			
 			
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);

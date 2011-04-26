@@ -19,6 +19,7 @@ public class Settings extends PreferenceActivity
 	}
 	
 	public static String getServerAddress(Context context){
-		return PreferenceManager.getDefaultSharedPreferences(context).getString(OPT_WEBSERVER , OPT_WEBSERVER_DEF);
+		return PreferenceManager.getDefaultSharedPreferences(context).getString(OPT_WEBSERVER , OPT_WEBSERVER_DEF) + "/JBridge";
 	}
+	
 }

@@ -48,7 +48,7 @@ public class Products extends Activity implements OnClickListener{
 		final TableLayout table = (TableLayout) findViewById(R.id.tableLayout1);		
 		table.removeAllViews();
 		
-		JSONObject json =RestEasy.doGet(Settings.getServerAddress(getBaseContext()) + "/JBridge/RestEasy/products");
+		JSONObject json =RestEasy.doGet(Settings.getServerAddress(getBaseContext()) + "/RestEasy/products");
 		
 		try
 		{
@@ -63,7 +63,7 @@ public class Products extends Activity implements OnClickListener{
 				ImageView img = new ImageView(this);
 				img.setScaleType(ScaleType.FIT_CENTER);
 				img.setPadding(3,3,3,3);
-				img.setImageBitmap(this.getImageBitmap(Settings.getServerAddress(getBaseContext()) + "/JBridge/products/thumbnails/" + picture));
+				img.setImageBitmap(this.getImageBitmap(Settings.getServerAddress(getBaseContext()) + "/products/thumbnails/" + picture));
 		                  
 		        TextView txtName = new TextView(this);
             	txtName.setText(name);
